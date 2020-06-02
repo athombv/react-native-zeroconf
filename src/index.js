@@ -118,6 +118,16 @@ export default class Zeroconf extends EventEmitter {
   }
 
   /**
+   * Scan for Zeroconf services,
+   * Defaults to _http._tcp. on local domain
+   */
+  scanAll(protocol = 'tcp', domain = 'local.') {
+    this._services = {}
+    this.emit('update')
+    RNZeroconf.scan(type, protocol, domain)
+  }
+
+  /**
    * Stop current scan if any
    */
   stop() {

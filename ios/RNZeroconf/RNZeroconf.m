@@ -28,6 +28,12 @@ RCT_EXPORT_METHOD(scan:(NSString *)type protocol:(NSString *)protocol domain:(NS
     [self.browser searchForServicesOfType:[NSString stringWithFormat:@"_%@._%@.", type, protocol] inDomain:domain];
 }
 
+RCT_EXPORT_METHOD(scanAll:protocol:(NSString *)protocol domain:(NSString *)domain)
+{
+    [self stop];
+    [self.browser searchForServicesOfType:[NSString stringWithFormat:@"_%@.", protocol] inDomain:domain];
+}
+
 RCT_EXPORT_METHOD(stop)
 {
     [self.browser stop];
